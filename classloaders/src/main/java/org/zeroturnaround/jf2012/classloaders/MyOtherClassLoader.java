@@ -6,10 +6,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class MyOtherClassLoader extends ClassLoader {
-  protected Class<?> findClass(String name) throws ClassNotFoundException {
+  public Class<?> loadClass(String name) throws ClassNotFoundException {
     String classFile = "target/classes/" + name.replace(".", "/") + ".class";
     Path path = FileSystems.getDefault().getPath(classFile);
 
+    if (!path.toFile().exists())
+      return super.loadClass(name);
+    
     byte[] bytes = null;
     try {
       bytes = Files.readAllBytes(path);
