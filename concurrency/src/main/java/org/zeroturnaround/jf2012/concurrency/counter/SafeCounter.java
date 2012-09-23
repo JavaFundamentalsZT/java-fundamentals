@@ -1,4 +1,4 @@
-package org.zeroturnaround.jf2012.concurrency;
+package org.zeroturnaround.jf2012.concurrency.counter;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

@@ -9,6 +9,7 @@
   <name>Java Fundamentals Parent</name>
 
   <modules>
+    <module>concurrency</module>
     <module>classloaders</module>
   </modules>
 </project>

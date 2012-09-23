@@ -1,6 +1,6 @@
-package org.zeroturnaround.jf2012.concurrency;
+package org.zeroturnaround.jf2012.concurrency.counter;
 
-public class UnsafeMain implements Runnable {
+public class SafeMain implements Runnable {
 
   private static final int NO_THREADS = 10;
 
@@ -8,12 +8,12 @@ public class UnsafeMain implements Runnable {
 
   public void run() {
     for (int i = 0; i < INCREMENTS_PER_THREAD; i++) {
-      UnsafeCounter.increment();
+      SafeCounter.increment();
     }
   }
 
   public static void main(String[] args) throws Exception {
-    Runnable task = new UnsafeMain();
+    Runnable task = new SafeMain();
 
     // Create and start threads
     Thread[] ts = new Thread[NO_THREADS];
@@ -26,7 +26,7 @@ public class UnsafeMain implements Runnable {
       ts[i].join();
     }
 
-    System.out.format("%d x %d = %d%n", NO_THREADS, INCREMENTS_PER_THREAD, UnsafeCounter.get());
+    System.out.format("%d x %d = %d%n", NO_THREADS, INCREMENTS_PER_THREAD, SafeCounter.get());
   }
 
 }
