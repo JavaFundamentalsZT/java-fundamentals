@@ -2,7 +2,7 @@ package org.zeroturnaround.jf2012.concurrency.counter;
 
 import java.util.concurrent.CountDownLatch;
 
-public class CountdownExecutor implements ConcurrentExecutor {
+public class CountdownExecutor extends AbstractConcurrentExecutor {
 
   @Override
   public void invoke(Runnable task, int threads) throws InterruptedException {

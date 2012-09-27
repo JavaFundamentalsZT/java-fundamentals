@@ -6,6 +6,10 @@ public class Main {
 
   private static enum ConcurrentExecutorType {
 
+    Barrier {
+      @Override
+      ConcurrentExecutor create() { return new BarrierExecutor(); }
+    },
     Countdown {
       @Override
       ConcurrentExecutor create() { return new CountdownExecutor(); }
@@ -94,9 +98,8 @@ public class Main {
   }
 
   private static void execute(ConcurrentExecutor executor, Counter counter, int threads, int times) throws Exception {
-    Repeat repeat = new Repeat(counter, times);
     long start = System.currentTimeMillis();
-    executor.invoke(repeat, threads);
+    executor.invoke(counter, threads, times);
     long time = System.currentTimeMillis() - start;
     System.out.format("%d x %d => %,d%n", threads, times, counter.getCount());
     System.out.format("Time taken: %d ms%n", time);

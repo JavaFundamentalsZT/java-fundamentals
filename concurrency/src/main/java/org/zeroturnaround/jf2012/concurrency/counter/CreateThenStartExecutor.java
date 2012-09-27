@@ -1,6 +1,6 @@
 package org.zeroturnaround.jf2012.concurrency.counter;
 
-public class CreateThenStartExecutor implements ConcurrentExecutor {
+public class CreateThenStartExecutor extends AbstractConcurrentExecutor {
 
   @Override
   public void invoke(Runnable task, int threads) throws InterruptedException {
