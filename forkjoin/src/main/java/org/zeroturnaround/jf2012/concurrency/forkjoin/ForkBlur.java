@@ -102,18 +102,22 @@ public class ForkBlur extends RecursiveAction {
   // Plumbing follows.
   
   public static void main(String[] args) throws Exception {
+    Integer processors = null;
+    if (args.length > 0)
+      processors = Integer.parseInt(args[0]);
+    
     String filename = "waves.jpg";
     File file = new File(filename);
     BufferedImage image = ImageIO.read(file);
     
     new ImageFrame("ForkBlur - original", image);
     
-    BufferedImage blurredImage = blur(image);
+    BufferedImage blurredImage = blur(image, processors);
     
     new ImageFrame("ForkBlur - processed", blurredImage);
   }
 
-  public static BufferedImage blur(BufferedImage srcImage) {
+  public static BufferedImage blur(BufferedImage srcImage, Integer processors) {
     int w = srcImage.getWidth();
     int h = srcImage.getHeight();
     
@@ -122,15 +126,16 @@ public class ForkBlur extends RecursiveAction {
 
     System.out.println("Array size is " + src.length);
     System.out.println("Threshold is " + sThreshold);
-    
-    int processors = Runtime.getRuntime().availableProcessors();
+
+    if (processors == null)
+      processors = Runtime.getRuntime().availableProcessors();
     System.out.println(Integer.toString(processors) + " processor" +
         (processors != 1 ? "s are " : " is ") + 
         "available");
     
     ForkBlur fb = new ForkBlur(src, 0, src.length, dst);
     
-    ForkJoinPool pool = new ForkJoinPool();
+    ForkJoinPool pool = new ForkJoinPool(processors);
     
     long startTime = System.currentTimeMillis();
     pool.invoke(fb);
