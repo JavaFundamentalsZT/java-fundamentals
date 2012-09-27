@@ -3,7 +3,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <packaging>jar</packaging>
-  <artifactId>jf-concurrency</artifactId>
+  <artifactId>jf-counter</artifactId>
 
   <parent>
     <groupId>java-fundamentals</groupId>
@@ -12,7 +12,7 @@
   </parent>
 
   <build>
-    <finalName>jf-concurrency</finalName>
+    <finalName>jf-counter</finalName>
 
     <plugins>
       <plugin>
