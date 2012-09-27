@@ -67,7 +67,7 @@ public class Main {
         i++;
       }
       if (args.length > i) {
-        threads = Integer.parseInt(args[i]);
+        times = Integer.parseInt(args[i]);
         i++;
       }
     }
@@ -92,7 +92,7 @@ public class Main {
   private static void execute(ConcurrentExecutor executor, Counter counter, int threads, int times) throws Exception {
     Repeat repeat = new Repeat(counter, times);
     long start = System.currentTimeMillis();
-    executor.invoke(repeat, times);
+    executor.invoke(repeat, threads);
     long time = System.currentTimeMillis() - start;
     System.out.format("%d x %d => %,d%n", threads, times, counter.getCount());
     System.out.format("Time taken: %d ms%n", time);
