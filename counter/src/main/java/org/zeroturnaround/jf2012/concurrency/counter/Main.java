@@ -10,7 +10,7 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
     ConcurrentExecutorType executor = ConcurrentExecutorType.Countdown;
-    CounterType counter = CounterType.Simple;
+    CounterType counter = CounterType.SimplePrimitive;
     int threads = DEFAULT_NO_THREADS;
     int times = DEFAULT_NO_TIMES;
 

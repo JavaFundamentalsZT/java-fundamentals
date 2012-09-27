@@ -9,6 +9,8 @@ public class FixedThreadPoolFibonacci {
     long start = System.currentTimeMillis();
 
     int n = 20;
+    if (args.length > 0)
+      n = Integer.parseInt(args[0]);
     System.out.printf("fibonacci(%d) = ", n);
 
     ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);

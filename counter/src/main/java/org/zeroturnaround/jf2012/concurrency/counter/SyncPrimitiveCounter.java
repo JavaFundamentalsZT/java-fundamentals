@@ -1,11 +1,11 @@
 package org.zeroturnaround.jf2012.concurrency.counter;
 
-public class SimpleCounter implements Counter {
+public class SyncPrimitiveCounter implements Counter {
 
   private int counter;
 
   @Override
-  public void run() {
+  public synchronized void run() {
     counter++;
   }
 

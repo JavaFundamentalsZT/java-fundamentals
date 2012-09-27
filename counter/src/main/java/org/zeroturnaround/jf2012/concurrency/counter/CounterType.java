@@ -2,17 +2,29 @@ package org.zeroturnaround.jf2012.concurrency.counter;
 
 public enum CounterType {
 
-  Simple {
+  SimplePrimitive {
     @Override
-    Counter create() { return new SimpleCounter(); }
+    Counter create() { return new SimplePrimitiveCounter(); }
   },
-  Volatile {
+  SimpleWrapper {
     @Override
-    Counter create() { return new VolatileCounter(); }
+    Counter create() { return new SimpleWrapperCounter(); }
   },
-  Sync {
+  VolatilePrimitive {
     @Override
-    Counter create() { return new SyncCounter(); }
+    Counter create() { return new VolatilePrimitiveCounter(); }
+  },
+  VolatileWrapper {
+    @Override
+    Counter create() { return new VolatileWrapperCounter(); }
+  },
+  SyncPrimitive {
+    @Override
+    Counter create() { return new SyncPrimitiveCounter(); }
+  },
+  SyncWrapper {
+    @Override
+    Counter create() { return new SyncWrapperCounter(); }
   },
   Atomic {
     @Override

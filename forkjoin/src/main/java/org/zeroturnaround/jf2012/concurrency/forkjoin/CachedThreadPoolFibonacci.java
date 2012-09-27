@@ -9,7 +9,10 @@ public class CachedThreadPoolFibonacci {
     long start = System.currentTimeMillis();
 
     int n = 20;
+    if (args.length > 0)
+      n = Integer.parseInt(args[0]);
     System.out.printf("fibonacci(%d) = ", n);
+    Thread.sleep(10*1000);
 
     ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
     Integer f = new ExecutedFibonacci(executor, n).call();

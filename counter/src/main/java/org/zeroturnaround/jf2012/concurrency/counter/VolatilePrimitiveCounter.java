@@ -1,6 +1,6 @@
 package org.zeroturnaround.jf2012.concurrency.counter;
 
-public class VolatileCounter implements Counter {
+public class VolatilePrimitiveCounter implements Counter {
 
   private volatile int counter;
 
