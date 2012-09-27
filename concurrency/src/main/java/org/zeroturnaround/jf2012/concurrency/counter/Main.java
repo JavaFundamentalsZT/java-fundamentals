@@ -4,52 +4,6 @@ import java.util.Arrays;
 
 public class Main {
 
-  private static enum ConcurrentExecutorType {
-
-    Barrier {
-      @Override
-      ConcurrentExecutor create() { return new BarrierExecutor(); }
-    },
-    Countdown {
-      @Override
-      ConcurrentExecutor create() { return new CountdownExecutor(); }
-    },
-    CreateAndStart {
-      @Override
-      ConcurrentExecutor create() { return new CreateAndStartExecutor(); }
-    },
-    CreateThenStart {
-      @Override
-      ConcurrentExecutor create() { return new CreateThenStartExecutor(); }
-    };
-
-    abstract ConcurrentExecutor create();
-
-  }
-
-  private static enum CounterType {
-
-    Simple {
-      @Override
-      Counter create() { return new SimpleCounter(); }
-    },
-    Volatile {
-      @Override
-      Counter create() { return new VolatileCounter(); }
-    },
-    Sync {
-      @Override
-      Counter create() { return new SyncCounter(); }
-    },
-    Atomic {
-      @Override
-      Counter create() { return new AtomicCounter(); }
-    };
-
-    abstract Counter create();
-
-  }
-
   private static final int DEFAULT_NO_THREADS = 10;
 
   private static final int DEFAULT_NO_TIMES = 1000;
