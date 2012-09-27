@@ -2,7 +2,7 @@ package org.zeroturnaround.jf2012.concurrency.counter;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class AtomicCounterTask implements Runnable {
+public class AtomicCounter implements Counter {
 
   private final AtomicInteger counter = new AtomicInteger();
 
@@ -12,8 +12,8 @@ public class AtomicCounterTask implements Runnable {
   }
 
   @Override
-  public String toString() {
-    return "AtomicCounter " + counter;
+  public int getCount() {
+    return counter.get();
   }
 
 }

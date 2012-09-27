@@ -1,6 +1,6 @@
 package org.zeroturnaround.jf2012.concurrency.counter;
 
-public class UnsafeCounterTask implements Runnable {
+public class UnsafeCounter implements Counter {
 
   private int counter;
 
@@ -10,8 +10,8 @@ public class UnsafeCounterTask implements Runnable {
   }
 
   @Override
-  public String toString() {
-    return "UnsafeCounter " + counter;
+  public int getCount() {
+    return counter;
   }
 
 }

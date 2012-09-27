@@ -1,6 +1,6 @@
 package org.zeroturnaround.jf2012.concurrency.counter;
 
-public class SyncCounterTask implements Runnable {
+public class SyncCounter implements Counter {
 
   private int counter;
 
@@ -10,8 +10,8 @@ public class SyncCounterTask implements Runnable {
   }
 
   @Override
-  public synchronized String toString() {
-    return "SyncCounter " + counter;
+  public int getCount() {
+    return counter;
   }
 
 }
