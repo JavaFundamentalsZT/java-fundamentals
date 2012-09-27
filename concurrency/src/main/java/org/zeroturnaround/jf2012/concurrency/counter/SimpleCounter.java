@@ -1,6 +1,6 @@
 package org.zeroturnaround.jf2012.concurrency.counter;
 
-public class UnsafeCounter implements Counter {
+public class SimpleCounter implements Counter {
 
   private int counter;
 

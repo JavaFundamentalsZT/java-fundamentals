@@ -25,15 +25,19 @@ public class Main {
 
   private static enum CounterType {
 
-    UnsafeCounter {
+    Simple {
       @Override
-      Counter create() { return new UnsafeCounter(); }
+      Counter create() { return new SimpleCounter(); }
     },
-    SyncCounter {
+    Volatile {
+      @Override
+      Counter create() { return new VolatileCounter(); }
+    },
+    Sync {
       @Override
       Counter create() { return new SyncCounter(); }
     },
-    AtomicCounter {
+    Atomic {
       @Override
       Counter create() { return new AtomicCounter(); }
     };
@@ -48,7 +52,7 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
     ConcurrentExecutorType executor = ConcurrentExecutorType.Countdown;
-    CounterType counter = CounterType.UnsafeCounter;
+    CounterType counter = CounterType.Simple;
     int threads = DEFAULT_NO_THREADS;
     int times = DEFAULT_NO_TIMES;
 
@@ -74,16 +78,16 @@ public class Main {
     catch (IllegalArgumentException e) {
       System.err.println("ERROR: " + e.getMessage());
       System.out.println();
-      System.out.println("Args usages: [<executor> [<task> [<no of threads> [<no of times>]]]]");
+      System.out.println("Args usages: [<executor> [<counter> [<no of threads> [<no of times>]]]]");
       System.out.println();
       System.out.format("Available executors: %s%n", Arrays.toString(ConcurrentExecutorType.values()));
-      System.out.format("Available tasks: %s%n", Arrays.toString(CounterType.values()));
+      System.out.format("Available counters: %s%n", Arrays.toString(CounterType.values()));
       System.out.println();
       return;
     }
 
     System.out.format("Using executor: %s%n", executor);
-    System.out.format("Using task: %s%n", counter);
+    System.out.format("Using counter: %s%n", counter);
     System.out.format("No of threads: %d%n", threads);
     System.out.format("No of times: %d%n", times);
     execute(executor.create(), counter.create(), threads, times);
