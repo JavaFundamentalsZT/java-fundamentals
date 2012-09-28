@@ -25,6 +25,7 @@ public class BlockingIO2 extends Thread {
       System.out.print("What's your name: ");
       String name = new BufferedReader(new InputStreamReader(System.in)).readLine();
       System.out.printf("Hi, %s!%n", name);
+      System.out.printf("I was interrupted: %b%n", Thread.currentThread().isInterrupted());
     }
     catch (Exception e) {
       e.printStackTrace();

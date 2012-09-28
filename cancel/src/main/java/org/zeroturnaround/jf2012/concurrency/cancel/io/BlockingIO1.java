@@ -16,6 +16,7 @@ public class BlockingIO1 implements Callable<Void> {
     List<Callable<Void>> tasks = new ArrayList<Callable<Void>>();
     tasks.add(new BlockingIO1());
     service.invokeAll(tasks, 1, TimeUnit.SECONDS);
+    System.out.println("Shutting down...");
     service.shutdown();
   }
 
@@ -23,6 +24,7 @@ public class BlockingIO1 implements Callable<Void> {
     System.out.print("What's your name: ");
     String name = new BufferedReader(new InputStreamReader(System.in)).readLine();
     System.out.printf("Hi, %s!%n", name);
+    System.out.printf("I was interrupted: %b%n", Thread.currentThread().isInterrupted());
     return null;
   }
 
