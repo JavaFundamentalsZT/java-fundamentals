@@ -9,27 +9,27 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-public class BlockingIO2 extends Thread {
+public class BlockingIO2 implements Callable<Void> {
 
   public static void main(String[] args) throws Exception {
-    BlockingIO2 thread = new BlockingIO2();
-    thread.start();
-    thread.join(1000);
-    System.out.println("Interrupting...");
-    thread.interrupt();
+    ExecutorService service = Executors.newSingleThreadExecutor();
+    try {
+      List<Callable<Void>> tasks = new ArrayList<Callable<Void>>();
+      tasks.add(new BlockingIO2());
+      service.invokeAll(tasks, 1, TimeUnit.SECONDS);
+    }
+    finally {
+      System.out.println("Shutting down...");
+      service.shutdown();
+    }
   }
 
-  @Override
-  public void run() {
-    try {
-      System.out.print("What's your name: ");
-      String name = new BufferedReader(new InputStreamReader(System.in)).readLine();
-      System.out.printf("Hi, %s!%n", name);
-      System.out.printf("I was interrupted: %b%n", Thread.currentThread().isInterrupted());
-    }
-    catch (Exception e) {
-      e.printStackTrace();
-    }
+  public Void call() throws Exception {
+    System.out.print("What's your name: ");
+    String name = new BufferedReader(new InputStreamReader(System.in)).readLine();
+    System.out.printf("Hi, %s!%n", name);
+    System.out.printf("I was interrupted: %b%n", Thread.currentThread().isInterrupted());
+    return null;
   }
 
 }
