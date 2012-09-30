@@ -1,6 +1,7 @@
-package org.zeroturnaround.jf2012.concurrency.counter;
+package org.zeroturnaround.jf2012.concurrency.counter.executor;
 
 import java.util.concurrent.CountDownLatch;
+
 
 public class CountdownExecutor extends AbstractConcurrentExecutor {
 

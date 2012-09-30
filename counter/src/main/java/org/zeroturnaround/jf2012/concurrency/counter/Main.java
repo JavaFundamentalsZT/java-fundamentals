@@ -2,6 +2,11 @@ package org.zeroturnaround.jf2012.concurrency.counter;
 
 import java.util.Arrays;
 
+import org.zeroturnaround.jf2012.concurrency.counter.counter.Counter;
+import org.zeroturnaround.jf2012.concurrency.counter.counter.CounterType;
+import org.zeroturnaround.jf2012.concurrency.counter.executor.ConcurrentExecutor;
+import org.zeroturnaround.jf2012.concurrency.counter.executor.ConcurrentExecutorType;
+
 public class Main {
 
   private static final int DEFAULT_NO_THREADS = 10;

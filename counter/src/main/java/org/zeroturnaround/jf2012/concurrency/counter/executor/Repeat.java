@@ -1,4 +1,4 @@
-package org.zeroturnaround.jf2012.concurrency.counter;
+package org.zeroturnaround.jf2012.concurrency.counter.executor;
 
 class Repeat implements Runnable {
 

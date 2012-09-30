@@ -1,4 +1,5 @@
-package org.zeroturnaround.jf2012.concurrency.counter;
+package org.zeroturnaround.jf2012.concurrency.counter.executor;
+
 
 public abstract class AbstractConcurrentExecutor implements ConcurrentExecutor {
 

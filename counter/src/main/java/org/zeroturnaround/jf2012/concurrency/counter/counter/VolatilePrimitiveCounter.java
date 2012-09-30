@@ -1,4 +1,4 @@
-package org.zeroturnaround.jf2012.concurrency.counter;
+package org.zeroturnaround.jf2012.concurrency.counter.counter;
 
 public class VolatilePrimitiveCounter implements Counter {
 
