@@ -11,7 +11,7 @@ public class Main {
 
   private static final int DEFAULT_NO_THREADS = 10;
 
-  private static final int DEFAULT_NO_TIMES = 1000;
+  private static final int DEFAULT_NO_TIMES = 100000;
 
   public static void main(String[] args) throws Exception {
     ConcurrentExecutorType executor = ConcurrentExecutorType.Countdown;
@@ -51,8 +51,8 @@ public class Main {
 
     System.out.format("Using executor: %s%n", executor);
     System.out.format("Using counter: %s%n", counter);
-    System.out.format("No of threads: %d%n", threads);
-    System.out.format("No of times: %d%n", times);
+    System.out.format("No of threads: %,d%n", threads);
+    System.out.format("No of times: %,d%n", times);
     execute(executor.create(), counter.create(), threads, times);
   }
 
@@ -60,7 +60,7 @@ public class Main {
     long start = System.currentTimeMillis();
     executor.invoke(counter, threads, times);
     long time = System.currentTimeMillis() - start;
-    System.out.format("%d x %d => %,d%n", threads, times, counter.getCount());
+    System.out.format("%d x %,d => %,d%n", threads, times, counter.getCount());
     System.out.format("Time taken: %d ms%n", time);
   }
 
