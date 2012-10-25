@@ -11,7 +11,7 @@ public class MyClassLoader2 extends ClassLoader {
     Path path = FileSystems.getDefault().getPath(classFile);
 
     if (!path.toFile().exists()) {
-      return super.loadClass(name);
+      return getParent().loadClass(name);
     }
 
     byte[] bytes = null;
