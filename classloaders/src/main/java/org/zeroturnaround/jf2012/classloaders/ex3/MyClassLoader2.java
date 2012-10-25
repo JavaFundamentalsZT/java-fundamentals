@@ -7,11 +7,20 @@ import java.nio.file.Path;
 
 public class MyClassLoader2 extends ClassLoader {
   public Class<?> loadClass(String name) throws ClassNotFoundException {
+    Class clazz = null;
+
+    try {
+      clazz = getParent().loadClass(name);
+      return clazz;
+    }
+    catch (ClassNotFoundException e) {
+    }
+
     String classFile = "custom/classes/" + name.replace(".", "/") + ".class";
     Path path = FileSystems.getDefault().getPath(classFile);
 
     if (!path.toFile().exists()) {
-      return getParent().loadClass(name);
+      throw new ClassNotFoundException();
     }
 
     byte[] bytes = null;
