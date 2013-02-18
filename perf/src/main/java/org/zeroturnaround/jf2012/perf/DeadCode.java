@@ -11,7 +11,6 @@ public class DeadCode {
 	}
 
 	private static void myMethod() {
-		// TODO Auto-generated method stub
 
 	}
 }
