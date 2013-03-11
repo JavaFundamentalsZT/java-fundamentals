@@ -13,6 +13,7 @@
     <module>counter</module>
     <module>classloaders</module>
     <module>io</module>
+    <module>process</module>
   </modules>
 
   <build>
