@@ -9,6 +9,7 @@
   <name>Java Fundamentals Parent</name>
 
   <modules>
+    <module>cancel</module>
     <module>counter</module>
     <module>classloaders</module>
     <module>io</module>

@@ -6,19 +6,17 @@ public class Unlock4 {
 
   public static void main(String[] args) throws Exception {
     ReentrantLock lock = new ReentrantLock();
-    {
-      Thread thread1 = new KeepLockInterruptibly(lock);
-      thread1.setDaemon(true);
-      thread1.start();
-      Thread.sleep(1000);
-    }
-    {
-      Thread thread2 = new KeepLockInterruptibly(lock);
-      thread2.start();
-      Thread.sleep(1000);
-      System.out.println("Interrupting...");
-      thread2.interrupt();
-    }
+
+    Thread t1 = new KeepLockInterruptibly(lock);
+    t1.setDaemon(true);
+    t1.start();
+    Thread.sleep(1000);
+
+    Thread t2 = new KeepLockInterruptibly(lock);
+    t2.start();
+    Thread.sleep(1000);
+    System.out.println("Interrupting...");
+    t2.interrupt();
   }
 
 }

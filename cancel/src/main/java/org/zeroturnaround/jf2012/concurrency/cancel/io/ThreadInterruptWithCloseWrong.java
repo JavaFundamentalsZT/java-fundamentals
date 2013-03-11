@@ -5,16 +5,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class BlockingIO6 extends Thread {
+public class ThreadInterruptWithCloseWrong extends Thread {
 
   private final InputStream in;
 
-  public BlockingIO6(InputStream in) {
+  public ThreadInterruptWithCloseWrong(InputStream in) {
     this.in = in;
   }
 
   public static void main(String[] args) throws Exception {
-    BlockingIO6 thread = new BlockingIO6(System.in);
+    ThreadInterruptWithCloseWrong thread = new ThreadInterruptWithCloseWrong(System.in);
     try {
       thread.start();
       thread.join(1000);
@@ -30,8 +30,9 @@ public class BlockingIO6 extends Thread {
     try {
       System.out.print("What's your name: ");
       String name = new BufferedReader(new InputStreamReader(in)).readLine();
+      boolean wasInterrupted = isInterrupted();
       System.out.printf("Hi, %s!%n", name);
-      System.out.printf("I was interrupted: %b%n", isInterrupted());
+      System.out.printf("I was interrupted: %b%n", wasInterrupted);
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -40,7 +41,6 @@ public class BlockingIO6 extends Thread {
 
   @Override
   public void interrupt() {
-    super.interrupt();
     System.out.println("Closing the input stream...");
     try {
       in.close();
@@ -48,6 +48,7 @@ public class BlockingIO6 extends Thread {
     catch (IOException e) {
       e.printStackTrace();
     }
+    super.interrupt();
   }
 
 }

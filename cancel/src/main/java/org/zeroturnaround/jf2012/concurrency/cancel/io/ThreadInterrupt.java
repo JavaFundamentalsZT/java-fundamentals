@@ -1,20 +1,12 @@
 package org.zeroturnaround.jf2012.concurrency.cancel.io;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class BlockingIO4 extends Thread {
-
-  private final InputStream in;
-
-  public BlockingIO4(InputStream in) {
-    this.in = in;
-  }
+public class ThreadInterrupt extends Thread {
 
   public static void main(String[] args) throws Exception {
-    BlockingIO4 thread = new BlockingIO4(System.in);
+    ThreadInterrupt thread = new ThreadInterrupt();
     try {
       thread.start();
       thread.join(1000);
@@ -29,25 +21,13 @@ public class BlockingIO4 extends Thread {
   public void run() {
     try {
       System.out.print("What's your name: ");
-      String name = new BufferedReader(new InputStreamReader(in)).readLine();
+      String name = new BufferedReader(new InputStreamReader(System.in)).readLine();
       System.out.printf("Hi, %s!%n", name);
       System.out.printf("I was interrupted: %b%n", isInterrupted());
     }
     catch (Exception e) {
       e.printStackTrace();
     }
-  }
-
-  @Override
-  public void interrupt() {
-    System.out.println("Closing the input stream...");
-    try {
-      in.close();
-    }
-    catch (IOException e) {
-      e.printStackTrace();
-    }
-    super.interrupt();
   }
 
 }
