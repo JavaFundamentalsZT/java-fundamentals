@@ -1,6 +1,8 @@
 .project
 .settings
 .classpath
+bin
 target
 tmp
 *.log
+

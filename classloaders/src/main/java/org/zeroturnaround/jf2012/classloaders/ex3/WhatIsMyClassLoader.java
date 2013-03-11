@@ -1,4 +1,4 @@
-package org.zeroturnaround.jf2012.classloaders;
+package org.zeroturnaround.jf2012.classloaders.ex3;
 
 public class WhatIsMyClassLoader {
   public static void main(String[] args) {
