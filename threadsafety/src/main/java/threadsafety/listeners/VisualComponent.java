@@ -1,4 +1,4 @@
-package concurrency2.listeners;
+package threadsafety.listeners;
 
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;

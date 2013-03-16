@@ -1,4 +1,4 @@
-package concurrency2.vehicles.monitor;
+package threadsafety.vehicles.monitor;
 
 import java.util.Collections;
 import java.util.HashMap;

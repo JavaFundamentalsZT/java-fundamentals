@@ -1,4 +1,4 @@
-package concurrency2.vehicles.publish;
+package threadsafety.vehicles.publish;
 
 class SafePoint {
   private int x, y;

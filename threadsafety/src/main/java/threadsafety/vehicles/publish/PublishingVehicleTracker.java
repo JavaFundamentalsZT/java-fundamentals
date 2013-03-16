@@ -1,4 +1,4 @@
-package concurrency2.vehicles.publish;
+package threadsafety.vehicles.publish;
 
 import java.util.Collections;
 import java.util.Map;

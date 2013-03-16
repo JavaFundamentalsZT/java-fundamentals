@@ -1,4 +1,4 @@
-package concurrency2.range;
+package threadsafety.range;
 
 import javax.annotation.concurrent.NotThreadSafe;
 

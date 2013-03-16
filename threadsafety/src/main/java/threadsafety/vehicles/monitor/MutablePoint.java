@@ -1,4 +1,4 @@
-package concurrency2.vehicles.monitor;
+package threadsafety.vehicles.monitor;
 
 class MutablePoint {
   int x, y;

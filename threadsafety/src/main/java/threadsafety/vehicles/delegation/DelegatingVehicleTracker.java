@@ -1,4 +1,4 @@
-package concurrency2.vehicles.delegation;
+package threadsafety.vehicles.delegation;
 
 import java.util.Collections;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package concurrency2.vehicles.delegation;
+package threadsafety.vehicles.delegation;
 
 class Point {
   final int x, y;
