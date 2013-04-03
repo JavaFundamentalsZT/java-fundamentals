@@ -1,15 +1,15 @@
 package org.zeroturnaround.jf2012.classloaders.ex5;
 
-public class TestClass {
+public class TestClass extends TestClassParent {
   // instance initializer
   {
-    System.out.println("Regular old body");
+    System.out.println("Instance init");
   }
 
   // static initializer
-  private static SecondTestClass secondClass = new SecondTestClass();
+  // private static SecondTestClass secondClass = new SecondTestClass();
   static {
-    System.out.println("Static block");
+    System.out.println("Static init");
   }
 
   // bunch of constructors
