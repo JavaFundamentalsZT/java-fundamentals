@@ -1,4 +1,4 @@
-package org.zeroturnaround.jf2012.classloaders.ex5;
+package org.zeroturnaround.jf.classloaders.ex5;
 
 public class TestClass extends TestClassParent {
   // instance initializer

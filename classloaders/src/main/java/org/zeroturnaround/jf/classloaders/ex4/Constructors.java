@@ -1,4 +1,4 @@
-package org.zeroturnaround.jf2012.classloaders.ex4;
+package org.zeroturnaround.jf.classloaders.ex4;
 
 /**
  * Lets show

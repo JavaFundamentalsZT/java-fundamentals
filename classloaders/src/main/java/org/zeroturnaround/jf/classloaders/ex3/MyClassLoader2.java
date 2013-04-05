@@ -1,4 +1,4 @@
-package org.zeroturnaround.jf2012.classloaders.ex3;
+package org.zeroturnaround.jf.classloaders.ex3;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;

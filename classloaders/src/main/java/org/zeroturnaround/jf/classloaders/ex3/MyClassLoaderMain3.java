@@ -1,4 +1,4 @@
-package org.zeroturnaround.jf2012.classloaders.ex3;
+package org.zeroturnaround.jf.classloaders.ex3;
 
 public class MyClassLoaderMain3 {
   public static void main(String[] args) throws Exception {

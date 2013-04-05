@@ -1,4 +1,4 @@
-package org.zeroturnaround.jf2012.classloaders.ex1;
+package org.zeroturnaround.jf.classloaders.ex1;
 
 public class SimpleClass {
   public static void main(String[] args) {
