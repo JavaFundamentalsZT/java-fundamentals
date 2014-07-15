@@ -11,4 +11,4 @@ This is a repository that we use to hold the different demos that we show at the
 * Read and generate Java byte code
 * Know most important JVM flags
 
-There is more information on the current class we run at http://zeroturnaround.github.com/java-fundamentals/
+Currently we don't have an active Java Fundamentals course going on.
