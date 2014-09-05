@@ -11,4 +11,5 @@ This is a repository that we use to hold the different demos that we show at the
 * Read and generate Java byte code
 * Know most important JVM flags
 
-Currently we don't have an active Java Fundamentals course going on.
+Current Java Fundamentals course:
+https://courses.cs.ut.ee/2014/javaFund/fall/Main/HomePage
