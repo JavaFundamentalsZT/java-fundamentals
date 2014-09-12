@@ -1,10 +1,10 @@
 package copy;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 
 public class CopyLines {
 
@@ -17,9 +17,12 @@ public class CopyLines {
       String line;
       while ((line = in.readLine()) != null)
         out.println(line);
-    } finally {
-      if (in != null) in.close();
-      if (out != null) out.close();
+    }
+    finally {
+      if (in != null)
+        in.close();
+      if (out != null)
+        out.close();
     }
   }
 

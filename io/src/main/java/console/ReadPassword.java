@@ -10,6 +10,7 @@ public class ReadPassword {
     if (console == null)
       throw new IllegalStateException("No console.");
     char[] password = console.readPassword("Enter password: ");
+    
     if (new String(password).equals("123456"))
       console.format("Permission granted!%n");
     else

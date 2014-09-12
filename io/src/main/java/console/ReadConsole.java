@@ -10,7 +10,10 @@ public class ReadConsole {
     if (console == null)
       throw new IllegalStateException("No console.");
     String name = console.readLine("Enter your name: ");
-    console.format("Hello, %s!%n", name);
+    if (name.compareToIgnoreCase("Tom") == 0)
+      console.format("%s is cool!%n", name);
+    else
+      console.format("Hello, %s!%n", name);
   }
 
 }
