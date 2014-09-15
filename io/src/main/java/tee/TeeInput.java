@@ -11,7 +11,7 @@ import org.apache.commons.io.input.TeeInputStream;
 public class TeeInput {
 
   public static void main(String[] args) throws IOException {
-    OutputStream out = new FileOutputStream("in.txt");
+    OutputStream out = new FileOutputStream("out.txt");
     System.setIn(new TeeInputStream(System.in, out));
 
     System.out.print("Enter your name: ");

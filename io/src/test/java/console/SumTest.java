@@ -15,11 +15,15 @@ public class SumTest extends Assert {
   public void test() throws Exception {
     PipedOutputStream pos = new PipedOutputStream();
     InputStream in = new PipedInputStream(pos);
+    
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     PrintStream out = new PrintStream(baos);
+    
     pos.write("3\n4\n".getBytes());
+    
     Sum.sum(in, out);
     String output = new String(baos.toByteArray());
+    
     assertEquals("7", output);
   }
 
