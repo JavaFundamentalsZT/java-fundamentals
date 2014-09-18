@@ -29,7 +29,7 @@ public class AutoCloseErrors {
 
     @Override
     public void close() throws IOException {
-      //throw new IOException("close failed");
+      throw new IOException("close failed");
     }
   }
 
