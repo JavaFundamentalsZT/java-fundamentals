@@ -55,7 +55,7 @@ public class BroadcastClientServer {
             log.info("Sleeping for {}ms", sleepBetweenNumbers);
             Thread.sleep(sleepBetweenNumbers);
           }
-          SumMessage request = new SumMessage(number);
+          NumberMessage request = new NumberMessage(number);
           log.info("Server sending request {}", request);
           this.srv.send(makeDatagramPacket(address, port, request));
         }
@@ -161,7 +161,7 @@ public class BroadcastClientServer {
           DatagramPacket requestPacket = makeEmptyDatagramPacket();
           s.receive(requestPacket);
           log.info("Received packet from {}:{}", requestPacket.getAddress(), requestPacket.getPort());
-          SumMessage request = new SumMessage(requestPacket.getData());
+          NumberMessage request = new NumberMessage(requestPacket.getData());
           log.info("Received message {}", request);
         }
         catch (IOException e) {
@@ -190,14 +190,15 @@ public class BroadcastClientServer {
 
   }
 
-  private static class SumMessage {
+  private static class NumberMessage {
+
     private long number;
 
-    public SumMessage(long number) {
+    public NumberMessage(long number) {
       this.number = number;
     }
 
-    public SumMessage(byte[] bytes) {
+    public NumberMessage(byte[] bytes) {
       ByteBuffer buffer = ByteBuffer.wrap(bytes);
       this.number = buffer.getLong();
     }
@@ -212,7 +213,7 @@ public class BroadcastClientServer {
 
     @Override
     public String toString() {
-      return "SumMessage [number=" + number + "]";
+      return "NumberMessage [number=" + number + "]";
     }
 
   }
@@ -222,7 +223,7 @@ public class BroadcastClientServer {
     return new DatagramPacket(payload, payload.length);
   }
 
-  private static DatagramPacket makeDatagramPacket(InetAddress address, int port, SumMessage msg) {
+  private static DatagramPacket makeDatagramPacket(InetAddress address, int port, NumberMessage msg) {
     byte[] bytes = msg.toByteArray();
     return new DatagramPacket(bytes, bytes.length, address, port);
   }

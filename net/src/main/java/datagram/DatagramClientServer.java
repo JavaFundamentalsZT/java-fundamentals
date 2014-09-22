@@ -89,11 +89,11 @@ public class DatagramClientServer {
     @Override
     public void run() {
       try {
-        SumMessage request = new SumMessage(requestPacket.getData());
+        NumberMessage request = new NumberMessage(requestPacket.getData());
         log.info("Processing message {}", request);
         long result = request.number * request.number;
         //sending response
-        SumMessage response = new SumMessage(result);
+        NumberMessage response = new NumberMessage(result);
         DatagramPacket responsePacket = makeDatagramPacket(
             requestPacket.getAddress(), requestPacket.getPort(), response);
         srv.send(responsePacket);
@@ -178,13 +178,13 @@ public class DatagramClientServer {
             log.info("Sleeping for {}ms", sleepBetweenNumbers);
             Thread.sleep(sleepBetweenNumbers);
           }
-          SumMessage request = new SumMessage(number);
+          NumberMessage request = new NumberMessage(number);
           log.info("Client sending request {}", request);
           s.send(makeDatagramPacket(host, port, request));
           //waiting for response
           DatagramPacket responsePacket = makeEmptyDatagramPacket();
           s.receive(responsePacket);
-          SumMessage response = new SumMessage(responsePacket.getData());
+          NumberMessage response = new NumberMessage(responsePacket.getData());
           log.info("Client received response message {}", response);
         }
         //clean up
@@ -222,14 +222,15 @@ public class DatagramClientServer {
 
   }
 
-  private static class SumMessage {
+  private static class NumberMessage {
+
     private long number;
 
-    public SumMessage(long number) {
+    public NumberMessage(long number) {
       this.number = number;
     }
 
-    public SumMessage(byte[] bytes) {
+    public NumberMessage(byte[] bytes) {
       ByteBuffer buffer = ByteBuffer.wrap(bytes);
       this.number = buffer.getLong();
     }
@@ -244,7 +245,7 @@ public class DatagramClientServer {
 
     @Override
     public String toString() {
-      return "SumMessage [number=" + number + "]";
+      return "NumberMessage [number=" + number + "]";
     }
 
   }
@@ -254,11 +255,11 @@ public class DatagramClientServer {
     return new DatagramPacket(payload, payload.length);
   }
 
-  private static DatagramPacket makeDatagramPacket(String host, int port, SumMessage msg) throws UnknownHostException {
+  private static DatagramPacket makeDatagramPacket(String host, int port, NumberMessage msg) throws UnknownHostException {
     return makeDatagramPacket(InetAddress.getByName(host), port, msg);
   }
 
-  private static DatagramPacket makeDatagramPacket(InetAddress address, int port, SumMessage msg) {
+  private static DatagramPacket makeDatagramPacket(InetAddress address, int port, NumberMessage msg) {
     byte[] bytes = msg.toByteArray();
     return new DatagramPacket(bytes, bytes.length, address, port);
   }
