@@ -60,8 +60,8 @@ public class NaiveClientServerV7 implements Runnable, Closeable {
   }
 
   private void readAndWriteStuffOnServer(InputStream in, OutputStream out) throws IOException {
-    ObjectInputStream ois = new ObjectInputStream(in);
     ObjectOutputStream oos = new ObjectOutputStream(out);
+    ObjectInputStream ois = new ObjectInputStream(in);
     oos.flush();
     int numberOfNumbers = ois.readInt();
     for (int i = 0; i < numberOfNumbers; i++) {
