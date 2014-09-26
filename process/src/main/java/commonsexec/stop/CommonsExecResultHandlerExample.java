@@ -20,7 +20,7 @@ public class CommonsExecResultHandlerExample {
       }
       @Override
       public void onProcessComplete(int exitValue) {
-        System.out.println("Process complete.");
+        System.out.println("Process complete: " + exitValue);
       }
     });
   }
