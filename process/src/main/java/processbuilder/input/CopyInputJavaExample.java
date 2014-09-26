@@ -21,7 +21,8 @@ public class CopyInputJavaExample {
 //    new Pump(System.in, process.getOutputStream()).run();
 //    IOUtils.copy(System.in, process.getOutputStream());
     process.waitFor();
-    System.out.println("Process finisged.");
+    //System.in.close();
+    System.out.println("Process finished.");
   }
   
 }
