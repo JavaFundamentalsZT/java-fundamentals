@@ -5,10 +5,10 @@ public class MyClassLoaderMain4 {
     MyClassLoader2 myOtherClassLoader = new MyClassLoader2();
     Class myClass = myOtherClassLoader.loadClass("org.zeroturnaround.jf2012.classloaders.ex3.MyCustomClass");
 
+    System.out.println(myClass.getClassLoader());
     // System.out.println(MyCustomClass.class.getClassLoader());
-    // System.out.println(myClass.getClassLoader());
 
-    // MyCustomInterface myObj = (MyCustomInterface)myClass.newInstance();
+    // MyCustomInterface myObj = (MyCustomInterface) myClass.newInstance();
     // myObj.printSomething();
     //
     // System.out.println(myObj.getClass().getClassLoader());

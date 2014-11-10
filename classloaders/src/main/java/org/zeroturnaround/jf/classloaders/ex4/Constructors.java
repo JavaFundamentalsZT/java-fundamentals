@@ -2,22 +2,31 @@ package org.zeroturnaround.jf.classloaders.ex4;
 
 /**
  * Lets show
- *  * <init>
- *  * Variable copying to constructors
- *  * final field initialization
- *  * private constructor
- *  * this()
- *  * forward init references
- *  * anything else?
+ * * <init> - default constructors
+ * * Show super
+ * * Variable copying to constructors
+ * * final field initialization
+ * * private constructor
+ * * this()
+ * * forward init references
+ * * instance initializer
+ * * anything else?
  */
 public class Constructors extends BaseClass {
   // final int foo;
   int foo;
-
-  public Constructors() {
-    this.foo = 42;
-  }
+  //int bar = 40;
   
+  // private Constructors() {}
+
+  // public Constructors() {
+  // this.foo = 42;
+  // }
+
+  // public Constructors(int a) {
+  // //this();
+  // }
+
   // public Constructors(int foo) {
   // this.foo = foo;
   // }

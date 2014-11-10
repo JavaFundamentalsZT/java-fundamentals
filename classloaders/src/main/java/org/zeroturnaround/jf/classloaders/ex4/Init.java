@@ -27,7 +27,7 @@ public class Init {
 	}
 
 	private void foobar() {
-		//int foo;
-		//System.out.println(foo);
+	  //int foo;
+      //System.out.println(foo);
 	}
 }
