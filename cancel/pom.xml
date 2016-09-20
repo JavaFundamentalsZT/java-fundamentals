@@ -13,8 +13,8 @@
 
   <dependencies>
     <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
+      <groupId>file.commons-io</groupId>
+      <artifactId>file.commons-io</artifactId>
       <version>2.4</version>
     </dependency>
 
