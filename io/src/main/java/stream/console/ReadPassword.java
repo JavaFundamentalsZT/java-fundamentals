@@ -2,6 +2,7 @@ package stream.console;
 
 import java.io.Console;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class ReadPassword {
 
@@ -9,9 +10,9 @@ public class ReadPassword {
     Console console = System.console();
     if (console == null)
       throw new IllegalStateException("No console.");
-    char[] password = console.readPassword("Enter password: ");
-    
-    if (new String(password).equals("123456"))
+    char[] expected = {'1','2','3','4','5','6'};
+    char[] actual = console.readPassword("Enter password: ");
+    if (Arrays.equals(actual, expected))
       console.format("Permission granted!%n");
     else
       console.format("Permission denied!%n");
