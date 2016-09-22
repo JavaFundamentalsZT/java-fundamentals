@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <packaging>jar</packaging>
   <artifactId>jf-process</artifactId>
@@ -13,7 +13,7 @@
 
   <build>
     <finalName>jf-process</finalName>
-    
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -44,21 +44,21 @@
       </plugin>
     </plugins>
   </build>
-  
+
   <dependencies>
     <dependency>
-      <groupId>file.commons-lang</groupId>
-      <artifactId>file.commons-lang</artifactId>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
       <version>2.4</version>
     </dependency>
     <dependency>
-      <groupId>file.commons-io</groupId>
-      <artifactId>file.commons-io</artifactId>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
       <version>2.4</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.file.commons</groupId>
-      <artifactId>file.commons-exec</artifactId>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-exec</artifactId>
       <version>1.1</version>
     </dependency>
     <dependency>
