@@ -1,6 +1,9 @@
 package processbuilder.output;
 import java.io.File;
 import java.lang.ProcessBuilder.Redirect;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.apache.commons.io.FileUtils;
 
@@ -15,15 +18,17 @@ import org.apache.commons.io.FileUtils;
 public class OutputRedirectExample {
 
   public static void main(String[] args) throws Exception {
-    ProcessBuilder builder = new ProcessBuilder("ps");
-    File file = new File("out.txt");
-    builder.redirectOutput(Redirect.to(file));
-    Process process = builder.start();
+    ProcessBuilder pb = new ProcessBuilder("ps");
+    Path file = Paths.get("out.txt");
+    pb.redirectOutput(Redirect.to(file.toFile()));
+    Process process = pb.start();
     process.waitFor();
+    // Process has finished writing the file
+    Files.lines(file).forEach(System.out::println);
 
-    int i = 0;
-    for (String line : FileUtils.readLines(file))
-      System.out.println(i++ + ". " + line);
+//    int i = 0;
+//    for (String line : FileUtils.readLines(file))
+//      System.out.println(i++ + ". " + line);
   }
 
 }

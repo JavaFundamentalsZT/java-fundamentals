@@ -14,10 +14,9 @@ import org.apache.commons.io.IOUtils;
 public class OutputCopyBothExample {
 
   public static void main(String[] args) throws Exception {
-    ProcessBuilder builder = new ProcessBuilder("ls", "notfound");
-    // Error message goes to stderr
-    builder.redirectErrorStream(true);
-    Process process = builder.start();
+    ProcessBuilder pb = new ProcessBuilder("ls", "notfound");
+    pb.redirectErrorStream(true);
+    Process process = pb.start();
 
     InputStream out = process.getInputStream();
     IOUtils.copy(out, System.out);

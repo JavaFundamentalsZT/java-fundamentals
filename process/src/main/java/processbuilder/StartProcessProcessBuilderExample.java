@@ -6,7 +6,20 @@ package processbuilder;
 public class StartProcessProcessBuilderExample {
 
   public static void main(String[] args) throws Exception {
-//    ProcessBuilder builder = new ProcessBuilder("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", "http://jf.0t.ee");
+    {
+      ProcessBuilder builder = new ProcessBuilder("C:\\Users\\Rein\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe", "http://jf.0t.ee");
+      builder.start();
+    }
+    {
+      ProcessBuilder builder = new ProcessBuilder("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", "http://jf.0t.ee");
+      builder.start();
+    }
+
+    {
+      ProcessBuilder builder = new ProcessBuilder("ps");
+      builder.start();
+    }
+
     
 //    ProcessBuilder builder = new ProcessBuilder("C:\\Users\\Rein\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe", "http://jf.0t.ee");
     

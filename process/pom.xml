@@ -67,6 +67,11 @@
       <version>1.7</version>
     </dependency>
     <dependency>
+      <groupId>org.zeroturnaround</groupId>
+      <artifactId>zt-process-killer</artifactId>
+      <version>1.4</version>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.5</version>

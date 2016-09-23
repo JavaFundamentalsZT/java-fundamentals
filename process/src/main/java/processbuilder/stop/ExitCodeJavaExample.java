@@ -8,9 +8,9 @@ public class ExitCodeJavaExample {
 
   public static void main(String[] args) throws Exception {
     System.out.println("Started.");
-    ProcessBuilder builder = new ProcessBuilder("cat", "out.txt");
-    builder.inheritIO();
-    Process process = builder.start();
+    ProcessBuilder pb = new ProcessBuilder("cat", "out.txt");
+    pb.inheritIO();
+    Process process = pb.start();
     int exit = process.waitFor();
     if (exit != 0)
       throw new IllegalStateException("Exit code: " + exit);

@@ -14,8 +14,7 @@ import org.apache.commons.io.IOUtils;
 public class OutputCopyExample {
 
   public static void main(String[] args) throws Exception {
-    ProcessBuilder builder = new ProcessBuilder("ps");
-    Process process = builder.start();
+    Process process = new ProcessBuilder("ps").start();
 
     InputStream out = process.getInputStream();
     IOUtils.copy(out, System.out);
