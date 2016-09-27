@@ -16,8 +16,6 @@ import org.xml.sax.helpers.DefaultHandler;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import static javax.xml.parsers.SAXParserFactory.newInstance;
-
 /**
  * See https://docs.oracle.com/javase/tutorial/jaxp/sax/
  */
@@ -31,18 +29,18 @@ public class SaxExample {
   }
 
   private static void read(Path src) throws Exception {
-    SAXParserFactory factory = newInstance();
+    SAXParserFactory factory = SAXParserFactory.newInstance();
     factory.setNamespaceAware(true);
     SAXParser parser = factory.newSAXParser();
     XMLReader reader = parser.getXMLReader();
     reader.setContentHandler(new MovieHandler());
-    try (InputStream in = Files.newInputStream(src)) {
-      reader.parse(new InputSource(in));
-    }
+//    try (InputStream in = Files.newInputStream(src)) {
+//      reader.parse(new InputSource(in));
+//    }
+    reader.parse(new InputSource(src.toUri().toString()));
   }
 
   private static class MovieHandler extends DefaultHandler {
-    @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
       if (localName.equals("movie")) {
         String title = attributes.getValue("title");

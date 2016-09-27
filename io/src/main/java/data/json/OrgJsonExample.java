@@ -38,7 +38,7 @@ public class OrgJsonExample {
       }
       doc.put("movies", movies);
     }
-    try (Writer writer = Files.newBufferedWriter(dest, StandardCharsets.UTF_8)) {
+    try (Writer writer = Files.newBufferedWriter(dest)) {
       doc.write(writer);
     }
   }
@@ -56,7 +56,7 @@ public class OrgJsonExample {
       data.movies = movies;
     }
     JSONObject doc = new JSONObject(data);
-    try (Writer writer = Files.newBufferedWriter(dest, StandardCharsets.UTF_8)) {
+    try (Writer writer = Files.newBufferedWriter(dest)) {
       doc.write(writer);
     }
   }

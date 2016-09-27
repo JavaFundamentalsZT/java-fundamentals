@@ -42,13 +42,13 @@ public class DomExample {
   private static Document create() throws Exception {
     DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
     Document doc = builder.newDocument();
+    Element movies = doc.createElement("movies");
     {
-      Element movies = doc.createElement("movies");
       {
-        Element interstellar = doc.createElement("movie");
-        interstellar.setAttribute("title", "Interstellar");
-        interstellar.setAttribute("year", "2014");
-        movies.appendChild(interstellar);
+        Element movie = doc.createElement("movie");
+        movie.setAttribute("title", "Interstellar");
+        movie.setAttribute("year", "2014");
+        movies.appendChild(movie);
       }
       doc.appendChild(movies);
     }

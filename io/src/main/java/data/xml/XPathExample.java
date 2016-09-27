@@ -32,8 +32,7 @@ public class XPathExample {
     DocumentBuilder builder = factory.newDocumentBuilder();
     Document doc = builder.parse(src.toFile());
 
-    XPathFactory xPathfactory = XPathFactory.newInstance();
-    XPath xpath = xPathfactory.newXPath();
+    XPath xpath = XPathFactory.newInstance().newXPath();
     {
       XPathExpression expr = xpath.compile("/movies/movie");
       Element movie = (Element) expr.evaluate(doc, XPathConstants.NODE);
