@@ -10,3 +10,7 @@ tmp
 *.iml
 io/output.data
 io/output.txt
+
+*.json
+*.serial
+movies.xml

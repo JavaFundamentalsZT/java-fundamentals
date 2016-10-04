@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.stream.Stream;
 
 /**
  * Created by rein on 20/09/16.
@@ -16,9 +17,13 @@ public class Tree {
   public static void main(String[] args) throws IOException {
     Path root = Paths.get("/Users/rein/tmp");
 
-    Files.walk(root).forEach(p -> System.out.println(p));
+    try (Stream<Path> s = Files.walk(root)) {
+      s.forEach(p -> System.out.println(p));
+    }
 
-    Files.walk(root).filter(Files::isDirectory).forEach(p -> System.out.println(p));
+    try (Stream<Path> s = Files.walk(root)) {
+      s.filter(Files::isDirectory).forEach(p -> System.out.println(p));
+    }
 
     Files.walkFileTree(root, new SimpleFileVisitor<Path>() {
       public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
