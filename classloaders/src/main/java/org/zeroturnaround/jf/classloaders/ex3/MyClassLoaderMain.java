@@ -8,7 +8,7 @@ public class MyClassLoaderMain {
   public static void main(String[] args) throws Exception {
     URL myClasses = new URL("file:/Users/toomasr/projects/java-fundamentals-course/classloaders/custom/classes/");
     MyClassLoader myClassLoader = new MyClassLoader(new URL[] { myClasses }, ClassLoader.getSystemClassLoader());
-    
+
     Class myClass = myClassLoader.loadClass("org.zeroturnaround.jf2012.classloaders.ex3.MyCustomClass");
 
     Object myObj = myClass.newInstance();
@@ -16,5 +16,6 @@ public class MyClassLoaderMain {
     m.invoke(myObj, null);
 
     System.out.println(myObj);
+    System.out.println(myObj.getClass().getClassLoader().getClass());
   }
 }
