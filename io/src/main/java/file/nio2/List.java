@@ -12,27 +12,27 @@ public class List {
     Path dir = Paths.get("/Users/rein");
 
     try (DirectoryStream<Path> ds = Files.newDirectoryStream(dir)) {
-      ds.forEach(p -> System.out.println(p));
+      ds.forEach(System.out::println);
     }
 
     System.out.println("Only dirs:");
     try (DirectoryStream<Path> ds = Files.newDirectoryStream(dir, Files::isDirectory)) {
-      ds.forEach(p -> System.out.println(p));
+      ds.forEach(System.out::println);
     }
 
     System.out.println("Hidden");
     try (DirectoryStream<Path> ds = Files.newDirectoryStream(dir, ".*")) {
-      ds.forEach(p -> System.out.println(p));
+      ds.forEach(System.out::println);
     }
 
     System.out.println("Stream 1");
     try (Stream<Path> s = Files.list(dir)) {
-      s.forEach(p -> System.out.println(p));
+      s.forEach(System.out::println);
     }
 
     System.out.println("Stream 2");
     try (Stream<Path> s = Files.list(dir)) {
-      s.filter(Files::isDirectory).forEach(p -> System.out.println(p));
+      s.filter(Files::isDirectory).forEach(System.out::println);
     }
   }
 
