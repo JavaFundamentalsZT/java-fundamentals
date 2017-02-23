@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Enumeration;
+import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
@@ -57,8 +58,9 @@ public class JavaZipExmaple {
   private static void packDir(Path src, Path dest) throws IOException {
     log.info("Packing {} into {}", src, dest);
     try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(dest));
-        ZipOutputStream zo = new ZipOutputStream(out)) {
-      Files.walk(src).filter(p -> !p.equals(src)).forEach(path -> packEntry(src, zo, path));
+        ZipOutputStream zo = new ZipOutputStream(out);
+        Stream<Path> dirStream = Files.walk(src)) {
+      dirStream.filter(p -> !p.equals(src)).forEach(path -> packEntry(src, zo, path));
     }
     log.info("Compressed size: {}", Files.size(dest));
   }
