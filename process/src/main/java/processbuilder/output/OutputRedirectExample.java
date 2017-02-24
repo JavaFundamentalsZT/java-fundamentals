@@ -4,6 +4,7 @@ import java.lang.ProcessBuilder.Redirect;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.stream.Stream;
 
 import org.apache.commons.io.FileUtils;
 
@@ -24,7 +25,9 @@ public class OutputRedirectExample {
     Process process = pb.start();
     process.waitFor();
     // Process has finished writing the file
-    Files.lines(file).forEach(System.out::println);
+    try (Stream<String> lines = Files.lines(file)) {
+      lines.forEach(System.out::println);
+    }
 
 //    int i = 0;
 //    for (String line : FileUtils.readLines(file))
