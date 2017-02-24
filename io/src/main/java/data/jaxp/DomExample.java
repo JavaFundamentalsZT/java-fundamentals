@@ -1,4 +1,4 @@
-package data.xml;
+package data.jaxp;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
@@ -27,7 +27,7 @@ public class DomExample {
   private static final Logger log = LoggerFactory.getLogger(DomExample.class);
 
   public static void main(String[] args) throws Exception {
-    Path dest = Paths.get("movies.xml");
+    Path dest = Paths.get("movies.dom.xml");
     write(dest);
     read(dest);
   }

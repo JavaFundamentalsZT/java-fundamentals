@@ -1,4 +1,4 @@
-package data.xml;
+package data.jaxp;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -27,7 +27,7 @@ public class SaxtExample {
   private static final Logger log = LoggerFactory.getLogger(SaxtExample.class);
 
   public static void main(String[] args) throws Exception {
-    Path dest = Paths.get("movies.xml");
+    Path dest = Paths.get("movies.saxt.jaxp");
     write(dest);
     read(dest);
   }

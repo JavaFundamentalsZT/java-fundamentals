@@ -13,6 +13,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import data.Data;
+import data.Movie;
+
 public class JavaSerialExample {
 
   private static final Logger log = LoggerFactory.getLogger(JavaSerialExample.class);
@@ -24,17 +27,9 @@ public class JavaSerialExample {
   }
 
   private static void writeBean(Path dest) throws Exception {
-    Data data = new Data();
-    {
-      List<Movie> movies = new ArrayList<>();
-      {
-        Movie movie = new Movie();
-        movie.title = "Interstellar";
-        movie.year = 2014;
-        movies.add(movie);
-      }
-      data.movies = movies;
-    }
+    List<Movie> movies = new ArrayList<>();
+    movies.add(new Movie("Interstellar", 2014));
+    Data data = new Data(movies);
     try (ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(Files.newOutputStream(dest)))) {
       out.writeObject(data);
     }
@@ -45,8 +40,8 @@ public class JavaSerialExample {
     try (ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(Files.newInputStream(src)))) {
       data = (Data) in.readObject();
     }
-    Movie movie = data.movies.get(0);
-    log.info("Found movie {} ({})", movie.title, movie.year);
+    Movie movie = data.getMovies().get(0);
+    log.info("Found movie {} ({})", movie.getTitle(), movie.getYear());
   }
 
 }

@@ -2,17 +2,17 @@ package data.json;
 
 import java.io.Reader;
 import java.io.Writer;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.google.gson.Gson;
+
+import data.Data;
+import data.Movie;
 
 public class GsonExample {
 
@@ -25,17 +25,9 @@ public class GsonExample {
   }
 
   private static void writeBean(Path dest) throws Exception {
-    Data data = new Data();
-    {
-      List<Movie> movies = new ArrayList<>();
-      {
-        Movie movie = new Movie();
-        movie.title = "Interstellar";
-        movie.year = 2014;
-        movies.add(movie);
-      }
-      data.movies = movies;
-    }
+    List<Movie> movies = new ArrayList<>();
+    movies.add(new Movie("Interstellar", 2014));
+    Data data = new Data(movies);
 //    String json = new Gson().toJson(data);
 //    FileUtils.writeStringToFile(dest.toFile(), json, StandardCharsets.UTF_8);
     try (Writer writer = Files.newBufferedWriter(dest)) {
@@ -49,8 +41,8 @@ public class GsonExample {
     try (Reader reader = Files.newBufferedReader(src)) {
       data = new Gson().fromJson(reader, Data.class);
     }
-    Movie movie = data.movies.get(0);
-    log.info("Found movie {} ({})", movie.title, movie.year);
+    Movie movie = data.getMovies().get(0);
+    log.info("Found movie {} ({})", movie.getTitle(), movie.getYear());
   }
 
 }

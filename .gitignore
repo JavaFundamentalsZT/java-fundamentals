@@ -13,4 +13,4 @@ io/output.txt
 
 *.json
 *.serial
-movies.xml
+movies*.xml
