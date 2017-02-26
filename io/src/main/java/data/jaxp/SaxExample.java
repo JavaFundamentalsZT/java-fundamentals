@@ -30,12 +30,7 @@ public class SaxExample {
     SAXParserFactory factory = SAXParserFactory.newInstance();
     factory.setNamespaceAware(true);
     SAXParser parser = factory.newSAXParser();
-    XMLReader reader = parser.getXMLReader();
-    reader.setContentHandler(new MovieHandler());
-//    try (InputStream in = Files.newInputStream(src)) {
-//      reader.parse(new InputSource(in));
-//    }
-    reader.parse(new InputSource(src.toUri().toString()));
+    parser.parse(new InputSource(src.toUri().toString()), new MovieHandler());
   }
 
   private static class MovieHandler extends DefaultHandler {

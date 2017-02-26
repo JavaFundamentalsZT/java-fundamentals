@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 @XmlRootElement(name = "movies")
-public class Data implements Serializable {
+public class Data {
 
   @XmlElement(name = "movie")
   private final List<Movie> movies;
@@ -20,7 +20,6 @@ public class Data implements Serializable {
   public Data(List<Movie> movies) {
     this.movies = Collections.unmodifiableList(movies);
   }
-
 
   public List<Movie> getMovies() {
     return movies;

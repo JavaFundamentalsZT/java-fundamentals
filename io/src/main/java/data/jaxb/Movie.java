@@ -5,21 +5,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 @XmlRootElement
-public final class Movie implements Serializable {
+public final class Movie {
   @XmlAttribute
   private final String title;
 
   @XmlAttribute
   private final int year;
 
-  public Movie(String title, int year) {
-    this.title = title;
-    this.year = year;
-  }
-
   @SuppressWarnings("unused")
   public Movie() {
     this(null, 0);
+  }
+
+  public Movie(String title, int year) {
+    this.title = title;
+    this.year = year;
   }
 
   public String getTitle() {

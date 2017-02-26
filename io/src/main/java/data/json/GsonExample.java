@@ -28,8 +28,6 @@ public class GsonExample {
     List<Movie> movies = new ArrayList<>();
     movies.add(new Movie("Interstellar", 2014));
     Data data = new Data(movies);
-//    String json = new Gson().toJson(data);
-//    FileUtils.writeStringToFile(dest.toFile(), json, StandardCharsets.UTF_8);
     try (Writer writer = Files.newBufferedWriter(dest)) {
       new Gson().toJson(data, writer);
     }
