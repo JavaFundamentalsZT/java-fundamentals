@@ -7,6 +7,10 @@ import java.util.List;
 public final class Data implements Serializable {
   private final List<Movie> movies;
 
+  public Data() {
+    movies = null;
+  }
+
   public Data(List<Movie> movies) {
     this.movies = Collections.unmodifiableList(movies);
   }

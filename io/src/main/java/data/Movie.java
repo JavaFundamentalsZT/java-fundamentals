@@ -6,6 +6,11 @@ public final class Movie implements Serializable {
   private final String title;
   private final int year;
 
+  public Movie() {
+    this.title = null;
+    this.year = 0;
+  }
+
   public Movie(String title, int year) {
     this.title = title;
     this.year = year;
