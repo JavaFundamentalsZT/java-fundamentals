@@ -12,4 +12,4 @@ This is a repository that we use to hold the different demos that we show at the
 * Know most important JVM flags
 
 Current Java Fundamentals course:
-https://courses.cs.ut.ee/2014/javaFund/fall/Main/HomePage
+https://courses.cs.ttu.ee/pages/ITI8905

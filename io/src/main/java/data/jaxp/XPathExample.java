@@ -1,4 +1,4 @@
-package data.xml;
+package data.jaxp;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,7 +23,7 @@ public class XPathExample {
   private static final Logger log = LoggerFactory.getLogger(XPathExample.class);
 
   public static void main(String[] args) throws Exception {
-    Path dest = Paths.get("movies.xml");
+    Path dest = Paths.get("movies.xpath.jaxp");
     read(dest);
   }
 

@@ -14,13 +14,16 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import data.Data;
+import data.Movie;
+
 public class OrgJsonExample {
 
   private static final Logger log = LoggerFactory.getLogger(OrgJsonExample.class);
 
   public static void main(String[] args) throws Exception {
-    Path dest = Paths.get("movies.json");
-    writeRaw(dest);
+    Path dest = Paths.get("movies.org.json");
+//    writeRaw(dest);
     writeBean(dest);
     readRaw(dest);
     // The library does not support readBean()
@@ -44,17 +47,9 @@ public class OrgJsonExample {
   }
 
   private static void writeBean(Path dest) throws Exception {
-    Data data = new Data();
-    {
-      List<Movie> movies = new ArrayList<>();
-      {
-        Movie movie = new Movie();
-        movie.title = "Interstellar";
-        movie.year = 2014;
-        movies.add(movie);
-      }
-      data.movies = movies;
-    }
+    List<Movie> movies = new ArrayList<>();
+    movies.add(new Movie("Interstellar", 2014));
+    Data data = new Data(movies);
     JSONObject doc = new JSONObject(data);
     try (Writer writer = Files.newBufferedWriter(dest)) {
       doc.write(writer);

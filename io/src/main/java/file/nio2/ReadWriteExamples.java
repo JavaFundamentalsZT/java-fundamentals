@@ -42,10 +42,10 @@ public class ReadWriteExamples {
     Path file = Paths.get("dog.txt");
 
     try (Stream<String> s = Files.lines(file, StandardCharsets.UTF_8)) {
-      s.forEach(line -> System.out.println(line));
+      s.forEach(System.out::println);
     }
     try (Stream<String> s = Files.lines(file)) {
-      s.forEach(line -> System.out.println(line));
+      s.forEach(System.out::println);
     }
   }
 

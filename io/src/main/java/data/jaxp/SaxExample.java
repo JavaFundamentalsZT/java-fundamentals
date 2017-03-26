@@ -1,7 +1,5 @@
-package data.xml;
+package data.jaxp;
 
-import java.io.InputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -24,7 +22,7 @@ public class SaxExample {
   private static final Logger log = LoggerFactory.getLogger(SaxExample.class);
 
   public static void main(String[] args) throws Exception {
-    Path dest = Paths.get("movies.xml");
+    Path dest = Paths.get("movies.sax.xml");
     read(dest);
   }
 
@@ -32,12 +30,7 @@ public class SaxExample {
     SAXParserFactory factory = SAXParserFactory.newInstance();
     factory.setNamespaceAware(true);
     SAXParser parser = factory.newSAXParser();
-    XMLReader reader = parser.getXMLReader();
-    reader.setContentHandler(new MovieHandler());
-//    try (InputStream in = Files.newInputStream(src)) {
-//      reader.parse(new InputSource(in));
-//    }
-    reader.parse(new InputSource(src.toUri().toString()));
+    parser.parse(new InputSource(src.toUri().toString()), new MovieHandler());
   }
 
   private static class MovieHandler extends DefaultHandler {

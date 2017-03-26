@@ -18,11 +18,11 @@ public class Tree {
     Path root = Paths.get("/Users/rein/tmp");
 
     try (Stream<Path> s = Files.walk(root)) {
-      s.forEach(p -> System.out.println(p));
+      s.forEach(System.out::println);
     }
 
     try (Stream<Path> s = Files.walk(root)) {
-      s.filter(Files::isDirectory).forEach(p -> System.out.println(p));
+      s.filter(Files::isDirectory).forEach(System.out::println);
     }
 
     Files.walkFileTree(root, new SimpleFileVisitor<Path>() {

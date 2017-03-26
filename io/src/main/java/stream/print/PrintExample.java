@@ -1,5 +1,6 @@
 package stream.print;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class PrintExample {
       out.write(bytes);
     }
 
-    try (PrintWriter out = new PrintWriter(new FileWriter("print.txt"))) {
+    try (PrintWriter out = new PrintWriter(new File("print.txt"), "UTF-8")) {
       out.println("Hello " + name);
       out.format("Hello %s%n", name);
 //       out.write(bytes);

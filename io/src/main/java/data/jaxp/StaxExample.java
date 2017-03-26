@@ -1,15 +1,4 @@
-package data.xml;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package data.jaxp;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
@@ -18,23 +7,30 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * See https://docs.oracle.com/javase/tutorial/jaxp/stax/
  */
-public class SaxtExample {
+public class StaxExample {
 
-  private static final Logger log = LoggerFactory.getLogger(SaxtExample.class);
+  private static final Logger log = LoggerFactory.getLogger(StaxExample.class);
 
   public static void main(String[] args) throws Exception {
-    Path dest = Paths.get("movies.xml");
+    Path dest = Paths.get("movies.saxt.jaxp");
     write(dest);
     read(dest);
   }
 
   private static void write(Path dest) throws Exception {
     XMLOutputFactory output = XMLOutputFactory.newInstance();
-    try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(dest))) {
+    try (Writer out = Files.newBufferedWriter(dest)) {
       XMLStreamWriter writer = output.createXMLStreamWriter(out);
       writer.writeStartDocument();
       {
@@ -53,7 +49,7 @@ public class SaxtExample {
 
   private static void read(Path src) throws Exception {
     XMLInputFactory f = XMLInputFactory.newInstance();
-    try (InputStream in = new BufferedInputStream(Files.newInputStream(src))) {
+    try (Reader in = Files.newBufferedReader(src)) {
       XMLEventReader reader = f.createXMLEventReader(in);
       while (reader.hasNext()) {
         XMLEvent event = reader.nextEvent();
