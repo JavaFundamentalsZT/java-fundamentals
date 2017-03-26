@@ -15,6 +15,7 @@
     <module>io</module>
     <module>process</module>
     <module>threadsafety</module>
+    <module>debugging</module>
   </modules>
 
   <build>
